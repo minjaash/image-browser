@@ -32,7 +32,7 @@ function InnerApp() {
       .then((response) => {
         setImages(response.data.results);
         addSearch(query);
-        navigate('/imageList');
+        navigate('/imagelist');
       })
       .catch((error) => {
         console.error('Error fetching images:', error);
