@@ -32,7 +32,7 @@ function InnerApp() {
       .then((response) => {
         setImages(response.data.results);
         addSearch(query);
-        navigate('/ImageList');
+        navigate('/imageList');
       })
       .catch((error) => {
         console.error('Error fetching images:', error);
@@ -50,7 +50,7 @@ function InnerApp() {
   return (
     <div className="App mx-2 mt-3">
       <h3 className="border border-round border-2 text-center bg-info">Image Browser</h3>
-
+      <form onSubmit={fetchImages}>
       <div className="input-group mb-3 w-50 ms-5 position-relative">
         <input
           type="text"
@@ -61,12 +61,12 @@ function InnerApp() {
         />
         <button
           type="submit"
-          className="btn btn-success input-group-text border border-2 mx-2"
-          onClick={() => fetchImages()}
-        >
+          className="btn btn-success input-group-text border border-2 mx-2" >
           Search
         </button>
+
       </div>
+      </form>
 
       {recentSearches.length > 0 && (
         <div className="ms-5 mb-3">
@@ -89,7 +89,7 @@ function InnerApp() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/image" element={<Image />} />
-        <Route path="/ImageList" element={<ImageList images={images} loading={loading} />} />
+        <Route path="/imagelist" element={<ImageList images={images} loading={loading} />} />
       </Routes>
     </div>
   );
