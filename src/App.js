@@ -50,23 +50,26 @@ function InnerApp() {
   return (
     <div className="App mx-2 mt-3">
       <h3 className="border border-round border-2 text-center bg-info">Image Browser</h3>
-      <form onSubmit={fetchImages}>
-      <div className="input-group mb-3 w-50 ms-5 position-relative">
-        <input
-          type="text"
-          className="form-control border border-2 border-warning"
-          onChange={changeHandler}
-          value={searchImage}
-          autoComplete="off"
-        />
-        <button
-          type="submit"
-          className="btn btn-success input-group-text border border-2 mx-2" >
-          Search
-        </button>
+                <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              fetchImages();
+            }}
+          >
+            <div className="input-group mb-3 w-50 ms-5 position-relative">
+              <input
+                type="text"
+                className="form-control border border-2 border-warning"
+                onChange={changeHandler}
+                value={searchImage}
+                autoComplete="off"
+              />
+              <button type="submit" className="btn btn-success input-group-text border border-2 mx-2">
+                Search
+              </button>
+            </div>
+          </form>
 
-      </div>
-      </form>
 
       {recentSearches.length > 0 && (
         <div className="ms-5 mb-3">
